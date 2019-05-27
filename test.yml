@@ -33,7 +33,6 @@ test:
           position: 3
       config:
         step_wait: 0
-        click_type: click
 
     - type: wait
       description: "Wait for 10 seconds"
