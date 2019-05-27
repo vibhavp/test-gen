@@ -1,0 +1,61 @@
+---
+test:
+  name: Test no result found
+  description: |
+    Search for random query and assert that nothing is found on google
+  base_url: https://google.com
+  step_wait: 5
+  steps:
+    - type: input
+      text: dbmndbndbndjkbdkbdgbdgbdgbgdkbkgk
+      description: Enter text
+      locators:
+        - type: attribute
+          key: name
+          value: q
+
+        - type: attribute
+          key: title
+          value: Search
+
+      config:
+        step_wait: 0
+
+    - type: click
+      description: Click search button
+      locators:
+        - type: attribute
+          key: value
+          value: "Google Search"
+
+        - type: css_selector
+          value: center > input
+          position: 3
+      config:
+        step_wait: 0
+
+    - type: wait
+      description: "Wait for 10 seconds"
+      max_wait: 30
+      until: url_changed
+      config:
+        step_wait: 0
+
+    - type: assertion
+      assertionType: textExists
+      value: "Your search - dbmndbndbndjkbdkbdgbdgbdgbgdkbkgk - did not match any documents"
+      locators:
+        - type: xpath
+          value: //div[id='topstuff']/div/div/p
+
+      config:
+        step_wait: 5
+
+    - type: assertion
+      assertionType: elementNotExists
+      locators:
+        - type: attribute
+          key: id
+          value: ires
+      config:
+        step_wait: 0
