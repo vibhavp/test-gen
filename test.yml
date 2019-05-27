@@ -34,13 +34,6 @@ test:
       config:
         step_wait: 0
 
-    - type: wait
-      description: "Wait for 10 seconds"
-      max_wait: 30
-      until: url_changed
-      config:
-        step_wait: 0
-
     - type: assertion
       assertionType: textExists
       value: "Your search - dbmndbndbndjkbdkbdgbdgbdgbgdkbkgk - did not match any documents"
